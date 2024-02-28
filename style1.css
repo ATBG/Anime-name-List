@@ -16,7 +16,7 @@ body {
 }
 
 h1, .anime-section h2, .anime-item label {
-    color: #eee; /* Adjust the color as needed */
+    color: rgba(141, 130, 130, 0.932); /* Adjust the color as needed */
 }
 
 .anime-section {
