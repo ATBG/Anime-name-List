@@ -164,14 +164,18 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(element);
     });
 });
-function showTab(tabId) {
+function showTab(atw) {
+    // Hide all tabs
+    document.getElementById('atw').style.display = 'block';
+    document.getElementById('wl').style.display = 'none';
+}
+function showTab(wl) {
     // Hide all tabs
     document.getElementById('atw').style.display = 'none';
-    document.getElementById('wl').style.display = 'none';
-
-    // Show the selected tab
-    document.getElementById(tabId).style.display = 'block';
+    document.getElementById('wl').style.display = 'block';
 }
+
+
 function sorts() {
     const sorter = document.getElementById('toWatchList');
     sorter.sort();
