@@ -25,7 +25,7 @@ function calculate() {
     }
 }
 // Add the square root function
-/**function squareRoot() {
+function squareRoot() {
     try {
         displayValue = Math.sqrt(eval(displayValue));
         displayElement.value = displayValue;
@@ -33,4 +33,4 @@ function calculate() {
         displayElement.value = 'Error';
     }
 }
-*/
+
