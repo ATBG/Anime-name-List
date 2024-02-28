@@ -166,9 +166,14 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 function showTab(tabId) {
     // Hide all tabs
-    document.getElementByClass('toWatchList').style.display = 'none';
-    document.getElementById('watchedList').style.display = 'none';
+    document.getElementById('atw').style.display = 'none';
+    document.getElementById('wl').style.display = 'none';
 
     // Show the selected tab
     document.getElementById(tabId).style.display = 'block';
 }
+function sorts() {
+    const sorter = document.getElementById('toWatchList');
+    sorter.sort();
+}
+sorts();

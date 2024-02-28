@@ -9,24 +9,25 @@
 </head>
 <body>
     
-<div class="scroll-container">
+<div class="scroll-container fade-in" >
     <h1>Animes to Watch</h1>
     <div>
         <label for="searchInput">Search Anime:</label>
         <input type="text" id="searchInput" oninput="searchAnime()" placeholder="Type to search">
     </div>
+</div>
+<div class="tabs">
+    <button onclick="showTab('atw')">To Watch</button>
+    <button onclick="showTab('wl')">Watched</button>
+</div>
     <div class="anime-section fade-in">
         <h2>Add New Anime</h2>
         <label for="newAnimeInput">Anime Name:</label>
         <input type="text" id="newAnimeInput" placeholder="Enter new anime name">
         <button onclick="addNewAnimeFromInput()">Add</button>
-    </div>
-    <div class="tabs">
-        <button onclick="showTab('toWatchList')">To Watch</button>
-        <button onclick="showTab('watchedList')">Watched</button>
-    </div>
 
-    <div class="anime-section">
+
+    <div class="anime-section" id="atw">
         <h2>To Watch</h2>
         <span><label for="totalToWatch" id="ttw">Total Anime: </label> <input id="totalToWatch" readonly type="text"> </span>
         <ul class="anime-list" id="toWatchList">
@@ -140,7 +141,7 @@
     </div>
 
 
-    <div class="anime-section fade-in" style="display: none;">
+    <div class="anime-section fade-in" id="wl" style="display: none;">
         <h2>Watched</h2>
         <label for="totalWatchedList" id="twl">Total Anime: </label> <input id="totalWatchedList" readonly type="text">
         <ul class="anime-list" id="watchedList" >
