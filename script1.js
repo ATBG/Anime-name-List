@@ -1,4 +1,4 @@
-// Function to load stored checkbox states from local storage
+ // Function to load stored checkbox states from local storage
 function loadCheckboxStates() {
     for (let i = 1; i <= 500; i++) {
         const checkbox = document.getElementById(`anime${i}`);
@@ -171,4 +171,5 @@ function showTab(tabId) {
 
     // Show the selected tab
     document.getElementById(tabId).style.display = 'block';
-}sorts();
+}
+showTab();
