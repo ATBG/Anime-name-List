@@ -9,7 +9,7 @@
 </head>
 <body>
     
-<div class="scroll-container fade-in">
+<div class="scroll-container">
     <h1>Animes to Watch</h1>
     <div>
         <label for="searchInput">Search Anime:</label>
@@ -26,7 +26,7 @@
         <button onclick="showTab('watchedList')">Watched</button>
     </div>
 
-    <div class="anime-section">
+    <div class="anime-section" id="twl">
         <h2>To Watch</h2>
         <span><label for="totalToWatch" id="ttw">Total Anime: </label> <input id="totalToWatch" readonly type="text"> </span>
         <ul class="anime-list" id="toWatchList">
@@ -140,7 +140,7 @@
     </div>
 
 
-    <div class="anime-section fade-in" style="display: none;">
+    <div class="anime-section fade-in" id="wl">
         <h2>Watched</h2>
         <label for="totalWatchedList" id="twl">Total Anime: </label> <input id="totalWatchedList" readonly type="text">
         <ul class="anime-list" id="watchedList" >
