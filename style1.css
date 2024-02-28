@@ -178,6 +178,6 @@ button:hover {
     opacity: 1;
     transform: translateY(0);
 }
-.tab-button.active {
+.tab button :active {
     background-color: #398a31;
 }
