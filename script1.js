@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 function showTab(tabId) {
     // Hide all tabs
-    document.getElementById('toWatchList').style.display = 'none';
+    document.getElementByClass('toWatchList').style.display = 'none';
     document.getElementById('watchedList').style.display = 'none';
 
     // Show the selected tab
