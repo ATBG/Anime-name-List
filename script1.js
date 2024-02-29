@@ -83,58 +83,10 @@ function deleteAnime(animeName) {
 }
 
 
-
-// Helper function to add a new anime to the list
-function addNewAnime(animeName) {
-    const toWatchList = document.getElementById('toWatchList');
-    const newCheckbox = document.createElement('input');
-    newCheckbox.type = 'checkbox';
-    newCheckbox.id = `anime${toWatchList.childElementCount + 1}`;
-    newCheckbox.value = animeName;
-
-    const newLabel = document.createElement('label');
-    newLabel.appendChild(newCheckbox);
-    newLabel.appendChild(document.createTextNode(` ${animeName}`));
-
-    const newListItem = document.createElement('li');
-    newListItem.classList.add('anime-item');
-    newListItem.appendChild(newLabel);
-
-    toWatchList.appendChild(newListItem);
-    saveAnimeList(); // Save the updated list after addition
-
-    // Save the new anime name permanently to local storage
-    const newAnimeList = JSON.parse(localStorage.getItem('animeList')) || [];
-    newAnimeList.push(animeName);
-    localStorage.setItem('animeList', JSON.stringify(newAnimeList));
+function addAnime(){
+   const input = document.getElementById('newAnimeInput')
 }
 
-// Function to initialize the anime list from local storage
-function initializeAnimeList() {
-    const storedAnimeList = JSON.parse(localStorage.getItem('animeList')) || [];
-    const toWatchList = document.getElementById('toWatchList');
-
-    // Add anime items to the list
-    storedAnimeList.forEach((animeName, index) => {
-        const newCheckbox = document.createElement('input');
-        newCheckbox.type = 'checkbox';
-        newCheckbox.id = `anime${index + 1}`;
-        newCheckbox.value = animeName;
-
-        const newLabel = document.createElement('label');
-        newLabel.appendChild(newCheckbox);
-        newLabel.appendChild(document.createTextNode(` ${animeName}`));
-
-        const newListItem = document.createElement('li');
-        newListItem.classList.add('anime-item');
-        newListItem.appendChild(newLabel);
-
-        toWatchList.appendChild(newListItem);
-    });
-}
-
-// Call the initialization function
-initializeAnimeList();
 
 function counter(){
     const toWatchNum = (document.getElementById('toWatchList')).children.length + 1;  
