@@ -1,0 +1,93 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative; /* Add relative positioning for watermark */
+}
+
+.page-heading {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333; /* Adjust color as needed */
+}
+
+.input {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.input input {
+  width: calc(100% - 20px);
+  margin: 5px;
+  padding: 10px;
+}
+
+.input label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group {
+  margin-top: 20px;
+}
+
+.form-row {
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#result-container {
+  margin-top: 20px;
+}
+
+.glow-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(135deg, #87CEEB, #4682B4, #808080);
+  opacity: 0.8; /* Adjust the opacity for the glowing effect */
+  animation: glow 2s infinite alternate; /* Apply the glowing animation */
+  z-index: -1; /* Ensure the background is behind other content */
+}
+
+@keyframes glow {
+  from {
+      opacity: 0.8; /* Initial opacity */
+      box-shadow: 0 0 10px 5px #778899; /* Initial shadow */
+  }
+  to {
+      opacity: 1; /* Final opacity */
+      box-shadow: 0 0 20px 10px #778899; /* Final shadow */
+  }
+}
