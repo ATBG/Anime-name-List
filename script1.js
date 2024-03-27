@@ -125,3 +125,6 @@ function showTab(tabId) {
     document.getElementById(tabId).style.display = 'block';
 }
 showTab();
+function openPage(url) {
+            window.location.href = url;
+        }
