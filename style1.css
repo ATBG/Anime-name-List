@@ -198,3 +198,7 @@ button:hover {
   .glow-btn:hover {
     box-shadow: 0 0 40px #4CAF50;
   }
+  #navigation {
+    text-align: center;
+    margin-top: 20px;
+  }
