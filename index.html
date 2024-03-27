@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animes to Watch</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    
+<div class="scroll-container">
+    <h1>Animes to Watch</h1>
+    <div>
+        <label for="searchInput">Search Anime:</label>
+        <input type="text" id="searchInput" oninput="searchAnime()" placeholder="Type to search">
+    </div>
+    <div class="anime-section fade-in">
+        <h2>Add New Anime</h2>
+        <label for="newAnimeInput">Anime Name:</label>
+        <input type="text" id="newAnimeInput" placeholder="Enter new anime name">
+        <button onclick="addNewAnimeFromInput()">Add</button>
+    </div>
+    <div class="tabs">
+        <button onclick="showTab('toWatchList')">To Watch</button>
+        <button onclick="showTab('watchedList')">Watched</button>
+    </div>
+
+    <div class="anime-section">
+        <h2>To Watch</h2>
+        <span><label for="totalToWatch" id="ttw">Total Anime: </label> <input id="totalToWatch" readonly type="text"> </span>
+        <ul class="anime-list" id="toWatchList">
+            <li class="anime-item"><label><input type="checkbox" id="anime1" value="Fullmetal Alchemist: Brotherhood"> Fullmetal Alchemist: Brotherhood</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime2" value="Death Note"> Death Note</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime3" value="Attack on Titan"> Attack on Titan</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime4" value="My Hero Academia"> My Hero Academia</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime5" value="Steins;Gate"> Steins;Gate</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime6" value="One Punch Man"> One Punch Man</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime7" value="Code Geass: Lelouch of the Rebellion"> Code Geass: Lelouch of the Rebellion</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime8" value="Cowboy Bebop"> Cowboy Bebop</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime9" value="Neon Genesis Evangelion"> Neon Genesis Evangelion</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime10" value="Demon Slayer: Kimetsu no Yaiba"> Demon Slayer: Kimetsu no Yaiba</label></li>
+            <!-- Continue adding anime items in the provided style -->
+            <li class="anime-item"><label><input type="checkbox" id="anime11" value="Naruto"> Naruto</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime12" value="Hunter x Hunter"> Hunter x Hunter</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime13" value="One Piece"> One Piece</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime14" value="Tokyo Ghoul"> Tokyo Ghoul</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime15" value="Mob Psycho 100"> Mob Psycho 100</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime16" value="Parasyte -the maxim-"> Parasyte -the maxim-</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime17" value="Sword Art Online"> Sword Art Online</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime18" value="Your Lie in April"> Your Lie in April</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime19" value="Haikyuu!!"> Haikyuu!!</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime20" value="Death Parade"> Death Parade</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime21" value="Assassination Classroom"> Assassination Classroom</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime22" value="Toradora!"> Toradora!</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime23" value="Clannad"> Clannad</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime24" value="Fairy Tail"> Fairy Tail</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime25" value="JoJo's Bizarre Adventure"> JoJo's Bizarre Adventure</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime26" value="Psycho-Pass"> Psycho-Pass</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime27" value="No Game No Life"> No Game No Life</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime28" value="Black Clover"> Black Clover</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime29" value="Great Teacher Onizuka"> Great Teacher Onizuka</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime30" value="The Promised Neverland"> The Promised Neverland</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime31" value="Vinland Saga"> Vinland Saga</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime32" value="Princess Mononoke"> Princess Mononoke</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime33" value="Made in Abyss"> Made in Abyss</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime34" value="Black Lagoon"> Black Lagoon</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime35" value="Anohana: The Flower We Saw That Day"> Anohana: The Flower We Saw That Day</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime36" value="The Rising of the Shield Hero"> The Rising of the Shield Hero</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime37" value="Re:Zero - Starting Life in Another World"> Re:Zero - Starting Life in Another World</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime38" value="K-On!"> K-On!</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime39" value="Demon City Shinjuku"> Demon City Shinjuku</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime40" value="The Melancholy of Haruhi Suzumiya"> The Melancholy of Haruhi Suzumiya</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime41" value="Hellsing Ultimate"> Hellsing Ultimate</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime42" value="Serial Experiments Lain"> Serial Experiments Lain</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime43" value="Kuroko's Basketball"> Kuroko's Basketball</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime44" value="Dragon Ball Z"> Dragon Ball Z</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime45" value="Gurren Lagann"> Gurren Lagann</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime46" value="Dragon Ball"> Dragon Ball</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime47" value="Beelzebub"> Beelzebub</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime48" value="Kaiji: Ultimate Survivor"> Kaiji: Ultimate Survivor</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime49" value="Bleach"> Bleach</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime50" value="Ghost in the Shell: Stand Alone Complex"> Ghost in the Shell: Stand Alone Complex</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime51" value="Erased"> Erased</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime52" value="Re:Creators"> Re:Creators</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime53" value="Assassins Pride"> Assassins Pride</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime54" value="Blue Exorcist"> Blue Exorcist</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime55" value="Magi: The Labyrinth of Magic"> Magi: The Labyrinth of Magic</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime56" value="Akame ga Kill!"> Akame ga Kill!</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime57" value="Prison School"> Prison School</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime58" value="Tokyo Ravens"> Tokyo Ravens</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime59" value="Dr. Stone"> Dr. Stone</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime60" value="Bakuman"> Bakuman</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime61" value="High School DxD"> High School DxD</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime62" value="The Seven Deadly Sins"> The Seven Deadly Sins</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime63" value="The Irregular at Magic High School"> The Irregular at Magic High School</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime64" value="High Score Girl"> High Score Girl</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime65" value="Log Horizon"> Log Horizon</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime66" value="Rurouni Kenshin"> Rurouni Kenshin</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime67" value="Assault Lily: Bouquet"> Assault Lily: Bouquet</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime68" value="Elfen Lied"> Elfen Lied</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime69" value="Love, Chunibyo & Other Delusions"> Love, Chunibyo & Other Delusions</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime70" value="Serial Experiments Lain"> Serial Experiments Lain</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime71" value="March Comes in Like a Lion"> March Comes in Like a Lion</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime72" value="Princess Tutu"> Princess Tutu</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime73" value="Ghost Hunt"> Ghost Hunt</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime74" value="Durarara!!"> Durarara!!</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime75" value="Jormungand"> Jormungand</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime76" value="Made in Abyss"> Made in Abyss</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime77" value="Kaiji: Ultimate Survivor"> Kaiji: Ultimate Survivor</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime78" value="Paranoia Agent"> Paranoia Agent</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime79" value="Gankutsuou: The Count of Monte Cristo"> Gankutsuou: The Count of Monte Cristo</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime80" value="Tengen Toppa Gurren Lagann"> Tengen Toppa Gurren Lagann</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime81" value="Inuyasha"> Inuyasha</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime82" value="Hinamatsuri"> Hinamatsuri</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime83" value="A Silent Voice (Movie)"> A Silent Voice (Movie)</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime84" value="Wolf's Rain"> Wolf's Rain</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime85" value="Kids on the Slope"> Kids on the Slope</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime86" value="The Ancient Magus' Bride"> The Ancient Magus' Bride</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime87" value="Beastars"> Beastars</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime88" value="Log Horizon"> Log Horizon</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime89" value="Trigun"> Trigun</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime90" value="Planetes"> Planetes</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime91" value="Zankyou no Terror"> Zankyou no Terror</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime92" value="Charlotte"> Charlotte</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime93" value="Barakamon"> Barakamon</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime94" value="The Devil is a Part-Timer!"> The Devil is a Part-Timer!</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime95" value="A Certain Scientific Railgun"> A Certain Scientific Railgun</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime96" value="School Rumble"> School Rumble</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime97" value="Terror in Resonance"> Terror in Resonance</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime98" value="Baccano!"> Baccano!</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime99" value="Hyouka"> Hyouka</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime100" value="Dorohedoro"> Dorohedoro</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime101" value="Chainsaw Man"> Chainsaw Man</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime103" value="Jujutsu Kaisen"> Jujutsu Kaisen</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime104" value="Rent a Girlfriend"> Rent a Girlfriend</label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime105" value="Your Name"> Your Name </label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime106" value="Darling in the Franxx"> Darling in the Franxx </label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime107" value="Solo Leveling"> Solo Leveling </label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime108" value="Suzume No Tojimari"> Suzume No Tojimari </label></li>
+            <li class="anime-item"><label><input type="checkbox" id="anime109" value="Horimiya"> Horimiya </label></li>
+        
+        
+        </ul>
+    </div>
+
+
+    <div class="anime-section fade-in" >
+        <h2>Watched</h2>
+        <label for="totalWatchedList" id="twl">Total Anime: </label> <input id="totalWatchedList" readonly type="text">
+        <ul class="anime-list" id="watchedList" >
+
+            <!-- Watched anime will be moved here -->
+        </ul>
+        <div class="watched-separator"></div>
+    </div>
+</div>
+    <script src="script1.js"></script>
+</div>
+</body>
+</html> 
