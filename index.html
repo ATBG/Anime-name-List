@@ -191,16 +191,18 @@
     const auth = getAuth();
 
     function loginWithGoogle() {
-        const provider = new GoogleAuthProvider();
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                // Handle successful login
-                console.log('User logged in:', result.user);
-            })
-            .catch((error) => {
-                // Handle errors
-                console.error('Login error:', error);
-            });
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider)
+        .then((result) => {
+            // Handle successful login
+            const user = result.user;
+            console.log('Logged in user:', user);
+        })
+        .catch((error) => {
+            // Handle errors
+            console.error('Google login error:', error);
+        });
+}
     }
 </script>
     <script src="script1.js"></script>
