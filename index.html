@@ -10,9 +10,7 @@
 <body>
     
 <div class="scroll-container">
-    <a href="login.html" target="_blank"><div class="login-container">
-    <button>Login</button>
-    </a>
+
 </div>
     <div id="navigation">
         <a href="calc.html" target="_blank"><button> Calculator</button> </a>
@@ -165,30 +163,47 @@
         <div class="watched-separator"></div>
     </div>
 </div>
+    <div class="login-container">
+    <button onclick="loginWithGoogle()">Login with Google</button>
+</div>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-analytics.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyAkWX29N7mTIliyrvIY48LYcJLSJPFjRHE",
+        authDomain: "anime-to-watch-a4d61.firebaseapp.com",
+        projectId: "anime-to-watch-a4d61",
+        storageBucket: "anime-to-watch-a4d61.appspot.com",
+        messagingSenderId: "230453226276",
+        appId: "1:230453226276:web:e8bac2cb6ec8e5cbf361b1",
+        measurementId: "G-MMRF7NT1EH"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+
+    function loginWithGoogle() {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // Handle successful login
+                console.log('User logged in:', result.user);
+            })
+            .catch((error) => {
+                // Handle errors
+                console.error('Login error:', error);
+            });
+    }
+</script>
     <script src="script1.js"></script>
 </div>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyAkWX29N7mTIliyrvIY48LYcJLSJPFjRHE",
-    authDomain: "anime-to-watch-a4d61.firebaseapp.com",
-    projectId: "anime-to-watch-a4d61",
-    storageBucket: "anime-to-watch-a4d61.appspot.com",
-    messagingSenderId: "230453226276",
-    appId: "1:230453226276:web:e8bac2cb6ec8e5cbf361b1",
-    measurementId: "G-MMRF7NT1EH"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
 </body>
 </html> 
