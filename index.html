@@ -12,7 +12,7 @@
 <div class="scroll-container">
 </div>
     <div class="login-container">
-    <button onclick="loginWithGoogle()">Login with Google</button>
+    <button onclick=loginWithGoogle()>Login with Google</button>
 </div>
 </div>
     <div id="navigation">
@@ -190,22 +190,22 @@
     const analytics = getAnalytics(app);
     const auth = getAuth();
 
-    function loginWithGoogle() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider)
-        .then((result) => {
-            // Handle successful login
-            const user = result.user;
-            console.log('Logged in user:', user);
-        })
-        .catch((error) => {
-            // Handle errors
-            console.error('Google login error:', error);
-        });
-}
+   function loginWithGoogle() {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider) // Use auth instead of firebase.auth()
+            .then((result) => {
+                // Handle successful login
+                const user = result.user;
+                console.log('Logged in user:', user);
+            })
+            .catch((error) => {
+                // Handle errors
+                console.error('Google login error:', error);
+            });
+    }
 
 </script>
-    <script src="script1.js"></script>
+<script src="script1.js"></script>
 </div>
 </body>
 </html> 
