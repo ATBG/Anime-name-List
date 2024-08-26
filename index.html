@@ -9,34 +9,42 @@
 </head>
 <body>
     
-<div class="scroll-container">
-</div>
-    <div id="navigation">
-        <a href="calc.html" target="_blank"><button> Calculator</button> </a>
-       <a href="HC.html" target="_blank"><button>HydroCarbon Namer</button> </a>
-       <a href="anime-generator.html" target="_blank"><button>Add Anime</button> </a>
-    </div>
+    <nav id="navigation">
+        <ul>
+            <li><a href="calc.html" target="_blank"><button>Calculator</button></a></li>
+            <li><a href="HC.html" target="_blank"><button>HydroCarbon Namer</button></a></li>
+            <li><a href="anime-generator.html" target="_blank"><button>Add Anime</button></a></li>
+        </ul>
+    </nav>
 
-    <h1>Animes to Watch</h1>
-    <div>
+    <header>
+        <h1>Animes to Watch</h1>
+    </header>
+
+    <section class="search-section">
         <label for="searchInput">Search Anime:</label>
         <input type="text" id="searchInput" oninput="searchAnime()" placeholder="Type to search">
-    </div>
-    <div class="anime-section fade-in">
+    </section>
+
+    <section class="anime-section fade-in">
         <h2>Add New Anime</h2>
         <label for="newAnimeInput">Anime Name:</label>
         <input type="text" id="newAnimeInput" placeholder="Enter new anime name">
         <button onclick="addNewAnimeFromInput()">Add</button>
-    </div>
-    <div class="tabs">
+    </section>
+
+    <section class="tabs">
         <button onclick="showTab('toWatchList')">To Watch</button>
         <button onclick="showTab('watchedList')">Watched</button>
-    </div>
+    </section>
 
-    <div class="anime-section">
+    <section id="toWatchList" class="anime-section">
         <h2>To Watch</h2>
-        <span><label for="totalToWatch" id="ttw">Total Anime: </label> <input id="totalToWatch" readonly type="text"> </span>
-        <ul class="anime-list" id="toWatchList">
+        <div>
+            <label for="totalToWatch" id="ttw">Total Anime:</label> 
+            <input id="totalToWatch" readonly type="text">
+        </div>
+        <ul class="anime-list">
             <li class="anime-item"><label><input type="checkbox" id="anime1" value="Fullmetal Alchemist: Brotherhood"> Fullmetal Alchemist: Brotherhood</label></li>
             <li class="anime-item"><label><input type="checkbox" id="anime2" value="Death Note"> Death Note</label></li>
             <li class="anime-item"><label><input type="checkbox" id="anime3" value="Attack on Titan"> Attack on Titan</label></li>
@@ -149,59 +157,56 @@
         
         
         </ul>
-    </div>
+    </section>
 
-
-    <div class="anime-section fade-in" >
+    <section id="watchedList" class="anime-section" style="display:none;">
         <h2>Watched</h2>
-        <label for="totalWatchedList" id="twl">Total Anime: </label> <input id="totalWatchedList" readonly type="text">
-        <ul class="anime-list" id="watchedList" >
-
-            <!-- Watched anime will be moved here -->
+        <ul class="anime-list">
+            <!-- Example item -->
+            <li class="anime-item"><label><input type="checkbox" value="Naruto" checked> Naruto</label></li>
+            <!-- Add watched anime items similarly -->
         </ul>
-        <div class="watched-separator"></div>
-    </div>
+    </section>
 
+    <footer>
+        <p>&copy; 2024 Anime Watchlist. All rights reserved.</p>
+    </footer>
 
-<script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-analytics.js";
-    import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+    <script>
+        function showTab(tabId) {
+            const tabs = document.querySelectorAll('.anime-section');
+            tabs.forEach(tab => tab.style.display = 'none');
+            document.getElementById(tabId).style.display = 'block';
+        }
 
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-        apiKey: "AIzaSyAkWX29N7mTIliyrvIY48LYcJLSJPFjRHE",
-        authDomain: "anime-to-watch-a4d61.firebaseapp.com",
-        projectId: "anime-to-watch-a4d61",
-        storageBucket: "anime-to-watch-a4d61.appspot.com",
-        messagingSenderId: "230453226276",
-        appId: "1:230453226276:web:e8bac2cb6ec8e5cbf361b1",
-        measurementId: "G-MMRF7NT1EH"
-    };
+        function addNewAnimeFromInput() {
+            const newAnime = document.getElementById('newAnimeInput').value;
+            if (newAnime) {
+                const listItem = document.createElement('li');
+                listItem.className = 'anime-item';
+                listItem.innerHTML = `<label><input type="checkbox" value="${newAnime}"> ${newAnime}</label>`;
+                document.getElementById('toWatchList').appendChild(listItem);
+                document.getElementById('newAnimeInput').value = '';
+                updateTotalToWatch();
+            }
+        }
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const auth = getAuth();
-
-   function loginWithGoogle() {
-        const provider = new GoogleAuthProvider();
-        signInWithPopup(auth, provider) // Use auth instead of firebase.auth()
-            .then((result) => {
-                // Handle successful login
-                const user = result.user;
-                console.log('Logged in user:', user);
-            })
-            .catch((error) => {
-                // Handle errors
-                console.error('Google login error:', error);
+        function searchAnime() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const items = document.querySelectorAll('.anime-item');
+            items.forEach(item => {
+                const animeName = item.textContent.toLowerCase();
+                item.style.display = animeName.includes(input) ? '' : 'none';
             });
-    }
+        }
 
-</script>
-<script src="script1.js"></script>
-</div>
+        function updateTotalToWatch() {
+            const total = document.querySelectorAll('#toWatchList .anime-item').length;
+            document.getElementById('totalToWatch').value = total;
+        }
+
+        document.addEventListener('DOMContentLoaded', updateTotalToWatch);
+    </script>
+    
 </body>
-</html> 
+</html>
