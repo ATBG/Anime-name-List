@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Download Links (Episodes 271 - 272)</title>
+    <script>
+        // Function to Base64 encode numbers
+        function base64Encode(num) {
+            return btoa(num.toString());
+        }
+
+        // Function to generate download links for episodes
+        function generateDownloadLinks() {
+            let baseNum = 11576; // Starting number for Episode 271
+            let episodeList = document.getElementById("episode-list");
+
+            // Loop to generate links from Episode 271 to 272
+            for (let i = 271; i <= 272; i++) {
+                let episodeNum = baseNum + (i - 271); // Increment for each episode
+                let encodedId = base64Encode(episodeNum);
+
+                // Create a new link element
+                let link = document.createElement("a");
+                link.href = `https://s3taku.com/download?id=${encodedId}`;
+                link.innerText = `Download Episode ${i}`;
+                link.target = "_blank"; // Open in a new tab
+
+                // Create a list item and append the link to it
+                let listItem = document.createElement("li");
+                listItem.appendChild(link);
+
+                // Add the list item to the episode list
+                episodeList.appendChild(listItem);
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = generateDownloadLinks;
+    </script>
+</head>
+<body>
+    <h1>Anime Download Links (Episodes 271 - 272)</h1>
+    <ul id="episode-list">
+        <!-- Download links will be generated and inserted here -->
+    </ul>
+</body>
+</html>
