@@ -3,107 +3,160 @@
  <head> 
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>Anime Download Links (Episodes 601 - 1000)</title> 
+  <title>Anime Download Links (Episodes 501 - ∞)</title> 
 
-<style>
-        /* General body styles */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
+  <style>
+    /* General body styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: #e0e0e0;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+    }
 
-        /* Header styling */
-        h1 {
-            background-color: #1e1e1e;
-            color: #f1f1f1;
-            padding: 20px;
-            text-align: center;
-            margin: 0;
-        }
+    /* Header styling */
+    h1 {
+        background-color: #1e1e1e;
+        color: #f1f1f1;
+        padding: 20px;
+        text-align: center;
+        margin: 0;
+    }
 
-        /* Unordered list styling */
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 20px;
-        }
+    /* Unordered list styling */
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 20px;
+    }
 
-        /* List item styling */
-        li {
-            margin-bottom: 10px;
-        }
+    /* List item styling */
+    li {
+        margin-bottom: 10px;
+    }
 
-        /* Link styling */
-        a {
-            text-decoration: none;
-            color: #1e90ff;
-            background-color: #333;
-            padding: 10px;
-            border-radius: 5px;
-            display: inline-block;
-            transition: background-color 0.3s, color 0.3s;
-        }
+    /* Link styling */
+    a {
+        text-decoration: none;
+        color: #1e90ff;
+        background-color: #333;
+        padding: 10px;
+        border-radius: 5px;
+        display: inline-block;
+        transition: background-color 0.3s, color 0.3s;
+    }
 
-        a:hover {
-            background-color: #555;
-            color: #ffffff;
-        }
-        a:visited {
-            color: #9b59b6; /* Change the color to a distinct shade after the link is visited */
-        }
-    </style>
+    a:hover {
+        background-color: #555;
+        color: #ffffff;
+    }
+
+    a:visited {
+        color: #9b59b6; /* Change the color to a distinct shade after the link is visited */
+    }
+
+    label {
+        background-color: #1e1e1e;
+        color: #f1f1f0;
+        padding: 2px;
+        text-align: center;
+        margin: 1.3px;
+    }
+
+    input {
+        color: white;
+        padding: 2px;
+        border: solid;
+        border-radius: 2px;
+        background-color: gray;
+        border-color: black;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #1e90ff;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #555;
+    }
+
+  </style>
+
   <script>
-        // Function to Base64 encode numbers
-        function base64Encode(num) {
-            return btoa(num.toString());
+    // Function to Base64 encode numbers
+    function base64Encode(num) {
+        return btoa(num.toString());
+    }
+
+    // Function to generate download links for episodes
+    function generateDownloadLinks() {
+        // Get values from input fields
+        const startEpisode = parseInt(document.getElementById("start-episode").value);
+        const endEpisode = parseInt(document.getElementById("end-episode").value);
+        const base64Code = document.getElementById("baseNums").value; // Base64 input
+
+        let episodeList = document.getElementById("episode-list");
+        episodeList.innerHTML = ""; // Clear previous results
+
+        // Validate input values
+        if (isNaN(startEpisode) || isNaN(endEpisode) || !base64Code || startEpisode > endEpisode) {
+            alert("Please enter valid numbers and ensure the start episode is less than the end episode.");
+            return;
         }
 
-        // Function to generate download links for episodes
-        function generateDownloadLinks() {
-            let baseNum = 6841; // Starting number for Episode 501
-            let episodeList = document.getElementById("episode-list");
+        // Decode the Base64 input to a decimal number
+        const baseNum = parseInt(atob(base64Code));
 
-            // Loop to generate links from Episode 601 to 1000
-            for (let i = 501; i <= 10000; i++) {
-                let episodeNum = baseNum + (i - 501); // Increment for each episode
-                let encodedId = base64Encode(episodeNum);
+        // Loop to generate links from startEpisode to endEpisode
+        for (let i = startEpisode; i <= endEpisode; i++) {
+            let episodeNum = baseNum + (i - startEpisode); // Increment for each episode
+            let encodedId = base64Encode(episodeNum); // Encode the episode number
 
-                // Create a new link element
-                let link = document.createElement("a");
-                link.href = `https://s3taku.com/download?id=${encodedId}`;
-                link.innerText = `Download Episode ${i}`;
-                link.target = "_blank"; // Open in a new tab
+            // Create a new link element
+            let link = document.createElement("a");
+            link.href = `https://s3taku.com/download?id=${encodedId}`;
+            link.innerText = `Download Episode ${i}`;
+            link.target = "_blank"; // Open in a new tab
 
-                // Create a list item and append the link to it
-                let listItem = document.createElement("li");
-                listItem.appendChild(link);
+            // Create a list item and append the link to it
+            let listItem = document.createElement("li");
+            listItem.appendChild(link);
 
-                // Add the list item to the episode list
-                episodeList.appendChild(listItem);
-            }
+            // Add the list item to the episode list
+            episodeList.appendChild(listItem);
         }
-
-        // Call the function when the page loads
-        window.onload = generateDownloadLinks;
-    </script> 
+    }
+  </script>
  </head> 
  <body> 
-  <h1>Anime Download Links (Episodes 501 - &infin)</h1> 
- !-- Input boxes for starting and finishing episode -->
-    <div>
-        <label for="start-episode">Starting Episode:</label>
-        <input type="number" id="start-episode" name="start-episode" placeholder="Enter starting episode">
+  <h1>Anime Download Links (Episodes 501 - ∞)</h1> 
 
-        <label for="end-episode">Finishing Episode:</label>
-        <input type="number" id="end-episode" name="end-episode" placeholder="Enter finishing episode">
-    </div>
-
-    <!-- Placeholder for generating links later -->
-  <ul id="episode-list"> <!-- Download links will be generated and inserted here --> 
+  <!-- Input boxes for starting and finishing episode -->
+  <div>
+    <label for="start-episode">Starting Episode:</label>
+    <input type="number" id="start-episode" name="start-episode" placeholder="Enter starting episode">
+    <br>
+    <label for="end-episode">Finishing Episode:</label>
+    <input type="number" id="end-episode" name="end-episode" placeholder="Enter finishing episode">
+    <br>    
+    <label for="baseNums">Enter the Base64 Code:</label>
+    <input type="text" id="baseNums" name="baseNums" placeholder="e.g. Nj0Mw">
+    <br>
+    <button onclick="generateDownloadLinks()">Generate Links</button>
+  </div>
+       
+  <!-- Placeholder for generating links later -->
+  <ul id="episode-list"> 
+    <!-- Download links will be generated and inserted here --> 
   </ul> 
  </body>
 </html>
