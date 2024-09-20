@@ -4,159 +4,226 @@
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <title>Anime Download Links (Episodes 501 - ∞)</title> 
-
   <style>
-    /* General body styles */
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #121212;
-        color: #e0e0e0;
-        margin: 0;
-        padding: 0;
-        line-height: 1.6;
-    }
-
-    /* Header styling */
-    h1 {
-        background-color: #1e1e1e;
-        color: #f1f1f1;
-        padding: 20px;
-        text-align: center;
-        margin: 0;
-    }
-
-    /* Unordered list styling */
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 20px;
-    }
-
-    /* List item styling */
-    li {
-        margin-bottom: 10px;
-    }
-
-    /* Link styling */
-    a {
-        text-decoration: none;
-        color: #1e90ff;
-        background-color: #333;
-        padding: 10px;
-        border-radius: 5px;
-        display: inline-block;
-        transition: background-color 0.3s, color 0.3s;
-    }
-
-    a:hover {
-        background-color: #555;
-        color: #ffffff;
-    }
-
-    a:visited {
-        color: #9b59b6; /* Change the color to a distinct shade after the link is visited */
-    }
-
-    label {
-        background-color: #1e1e1e;
-        color: #f1f1f0;
-        padding: 2px;
-        text-align: center;
-        margin: 1.3px;
-    }
-
-    input {
-        color: white;
-        padding: 2px;
-        border: solid;
-        border-radius: 2px;
-        background-color: gray;
-        border-color: black;
-    }
-
-    button {
-        margin-top: 10px;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        background-color: #1e90ff;
-        color: #fff;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    button:hover {
-        background-color: #555;
-    }
-
-  </style>
-
-  <script>
-    // Function to Base64 encode numbers
-    function base64Encode(num) {
-        return btoa(num.toString());
-    }
-
-    // Function to generate download links for episodes
-    function generateDownloadLinks() {
-        // Get values from input fields
-        const startEpisode = parseInt(document.getElementById("start-episode").value);
-        const endEpisode = parseInt(document.getElementById("end-episode").value);
-        const base64Code = document.getElementById("baseNums").value; // Base64 input
-
-        let episodeList = document.getElementById("episode-list");
-        episodeList.innerHTML = ""; // Clear previous results
-
-        // Validate input values
-        if (isNaN(startEpisode) || isNaN(endEpisode) || !base64Code || startEpisode > endEpisode) {
-            alert("Please enter valid numbers and ensure the start episode is less than the end episode.");
-            return;
+        /* General body styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
         }
 
-        // Decode the Base64 input to a decimal number
-        const baseNum = parseInt(atob(base64Code));
-
-        // Loop to generate links from startEpisode to endEpisode
-        for (let i = startEpisode; i <= endEpisode; i++) {
-            let episodeNum = baseNum + (i - startEpisode); // Increment for each episode
-            let encodedId = base64Encode(episodeNum); // Encode the episode number
-
-            // Create a new link element
-            let link = document.createElement("a");
-            link.href = `https://s3taku.com/download?id=${encodedId}`;
-            link.innerText = `Download Episode ${i}`;
-            link.target = "_blank"; // Open in a new tab
-
-            // Create a list item and append the link to it
-            let listItem = document.createElement("li");
-            listItem.appendChild(link);
-
-            // Add the list item to the episode list
-            episodeList.appendChild(listItem);
+        /* Header styling */
+        h1 {
+            background-color: #1e1e1e;
+            color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+            margin: 0;
+            font-size: 1.5em;
         }
-    }
-  </script>
+
+        /* Container styling */
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+        }
+
+        /* Form elements styling */
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input[type="number"], input[type="text"], input[type="radio"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background-color: #222;
+            color: #fff;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        input[type="radio"] {
+            width: auto;
+            margin: 0 5px 0 0;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1e90ff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        /* Unordered list styling */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        /* List item styling */
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Link styling */
+        a {
+            text-decoration: none;
+            color: #1e90ff;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        a:hover {
+            background-color: #555;
+            color: #ffffff;
+        }
+
+        a:visited {
+            color: #9b59b6; /* Change the color to a distinct shade after the link is visited */
+        }
+
+        .calc-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .calc-container label {
+            margin: 5px 0;
+        }
+
+        .calc-container input[type="text"] {
+            width: calc(100% - 22px);
+        }
+
+        .calc-container input[type="text"][readonly] {
+            background-color: #333;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.2em;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            input[type="number"], input[type="text"], button {
+                width: 100%;
+            }
+        }
+    </style> 
  </head> 
  <body> 
   <h1>Anime Download Links (Episodes 501 - ∞)</h1> 
-
-  <!-- Input boxes for starting and finishing episode -->
-  <div>
-    <label for="start-episode">Starting Episode:</label>
-    <input type="number" id="start-episode" name="start-episode" placeholder="Enter starting episode">
-    <br>
-    <label for="end-episode">Finishing Episode:</label>
-    <input type="number" id="end-episode" name="end-episode" placeholder="Enter finishing episode">
-    <br>    
-    <label for="baseNums">Enter the Base64 Code:</label>
-    <input type="text" id="baseNums" name="baseNums" placeholder="e.g. Nj0Mw">
-    <br>
-    <button onclick="generateDownloadLinks()">Generate Links</button>
-  </div>
-       
-  <!-- Placeholder for generating links later -->
-  <ul id="episode-list"> 
-    <!-- Download links will be generated and inserted here --> 
+  <div class="container"> <label for="start-episode">Starting Episode:</label> 
+   <input type="number" id="start-episode" name="start-episode" placeholder="Enter starting episode"> <label for="end-episode">Finishing Episode:</label> 
+   <input type="number" id="end-episode" name="end-episode" placeholder="Enter finishing episode"> <label for="baseNums">Enter the Base64 Code:</label> 
+   <input type="text" id="baseNums" name="baseNums" placeholder="e.g. Nj0Mw"> <button onclick="generateDownloadLinks()">Generate Links</button> 
+   <div class="calc-container"> <label for="numbers">Calculator:</label> 
+    <input type="text" id="numbers" placeholder="Enter numbers to add (e.g., 1+2+3)" oninput="addNumbers()"> <label for="result">Result:</label> 
+    <input type="text" id="result" placeholder="Result" readonly> <label>Encode/Decode:</label> 
+    <input type="radio" id="encode" name="action" value="encode" checked onclick="encodeDecode()"> <label for="encode">Encode</label> 
+    <input type="radio" id="decode" name="action" value="decode" onclick="encodeDecode()"> <label for="decode">Decode</label> <label for="inputText">Input Text:</label> 
+    <input type="text" id="inputText" placeholder="Enter text" oninput="encodeDecode()"> <label for="outputText">Output Text:</label> 
+    <input type="text" id="outputText" placeholder="Result" readonly> 
+   </div> 
+  </div> <!-- Placeholder for generating links later --> 
+  <ul id="episode-list"> <!-- Download links will be generated and inserted here --> 
   </ul> 
+  <script>
+        // Function to Base64 encode numbers
+        function base64Encode(num) {
+            return btoa(num.toString());
+        }
+
+        // Function to generate download links for episodes
+        function generateDownloadLinks() {
+            // Get values from input fields
+            const startEpisode = parseInt(document.getElementById("start-episode").value);
+            const endEpisode = parseInt(document.getElementById("end-episode").value);
+            const base64Code = document.getElementById("baseNums").value; // Base64 input
+
+            let episodeList = document.getElementById("episode-list");
+            episodeList.innerHTML = ""; // Clear previous results
+
+            // Validate input values
+            if (isNaN(startEpisode) || isNaN(endEpisode) || !base64Code || startEpisode > endEpisode) {
+                alert("Please enter valid numbers and ensure the start episode is less than the end episode.");
+                return;
+            }
+
+            // Decode the Base64 input to a decimal number
+            const baseNum = parseInt(atob(base64Code));
+
+            // Loop to generate links from startEpisode to endEpisode
+            for (let i = startEpisode; i <= endEpisode; i++) {
+                let episodeNum = baseNum + (i - startEpisode); // Increment for each episode
+                let encodedId = base64Encode(episodeNum); // Encode the episode number
+
+                // Create a new link element
+                let link = document.createElement("a");
+                link.href = `https://s3taku.com/download?id=${encodedId}`;
+                link.innerText = `Download Episode ${i}`;
+                link.target = "_blank"; // Open in a new tab
+
+                // Create a list item and append the link to it
+                let listItem = document.createElement("li");
+                listItem.appendChild(link);
+
+                // Add the list item to the episode list
+                episodeList.appendChild(listItem);
+            }
+        }
+
+        function addNumbers() {
+            let input = document.getElementById("numbers").value;
+            let numbers = input.split('+').map(Number);
+            let sum = numbers.reduce((a, b) => a + b, 0);
+            document.getElementById("result").value = sum;
+        }
+
+        function encodeDecode() {
+            let input = document.getElementById("inputText").value;
+            let option = document.querySelector('input[name="action"]:checked').value;
+            let result;
+
+            if (option === "encode") {
+                result = btoa(input);
+            } else if (option === "decode") {
+                try {
+                    result = atob(input);
+                } catch (e) {
+                    result = "Invalid Base64 string";
+                }
+            }
+            document.getElementById("outputText").value = result;
+        }
+    </script> 
  </body>
 </html>
